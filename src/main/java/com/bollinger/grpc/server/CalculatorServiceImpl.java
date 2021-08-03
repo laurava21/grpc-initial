@@ -4,14 +4,17 @@ import com.bollinger.proto.calculator.Calculator;
 import com.bollinger.proto.calculator.CalculatorRequest;
 import com.bollinger.proto.calculator.CalculatorResponse;
 import com.bollinger.proto.calculator.CalculatorServiceGrpc;
-import io.grpc.ManagedChannelBuilder;
 import io.grpc.stub.StreamObserver;
 
+/**
+ * Calculator service implementation
+ * lva
+ */
 public class CalculatorServiceImpl extends CalculatorServiceGrpc.CalculatorServiceImplBase {
     @Override
     public void sum(CalculatorRequest request, StreamObserver<CalculatorResponse> responseObserver) {
 
-        // obtain values
+        // obtain values from request
         Calculator calculator = request.getCalculator();
         var sum1 = calculator.getSum1();
         var sum2 = calculator.getSum2();

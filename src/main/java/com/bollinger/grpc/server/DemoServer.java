@@ -5,6 +5,10 @@ import io.grpc.ServerBuilder;
 
 import java.io.IOException;
 
+/**
+ * Demo server
+ * lva
+ */
 public class DemoServer {
     public static void main(String[] args) throws IOException, InterruptedException {
         System.out.println("Hello gRPC!");
@@ -16,7 +20,7 @@ public class DemoServer {
 
         // before await
         Runtime.getRuntime().addShutdownHook(new Thread(()->{
-            System.out.println("Recive a shutdown request");
+            System.out.println("Receive a shutdown request");
             server.shutdown();
             System.out.println("Successfully stopped the server");
         }));

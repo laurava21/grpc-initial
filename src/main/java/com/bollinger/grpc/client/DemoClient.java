@@ -1,6 +1,5 @@
 package com.bollinger.grpc.client;
 
-import com.proto.dummy.DummyServiceGrpc;
 import com.proto.greet.GreetRequest;
 import com.proto.greet.GreetResponse;
 import com.proto.greet.GreetServiceGrpc;
@@ -8,16 +7,21 @@ import com.proto.greet.Greeting;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 
+/**
+ * Demo client
+ * lva
+ */
 public class DemoClient {
     public static void main(String[] args) {
         System.out.println("Hello I'm the gRPC client!");
 
+        // channel
         ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost",50051)
                 .usePlaintext()
                 .build();
 
         System.out.println("Creating stub");
-        // old and dummy
+        // dummy
         //DummyServiceGrpc.DummyServiceBlockingStub syncClient = DummyServiceGrpc.newBlockingStub(channel);
         //DummyServiceGrpc.DummyServiceFutureStub asyncClient = DummyServiceGrpc.newFutureStub(channel);
 
@@ -40,7 +44,7 @@ public class DemoClient {
 
         System.out.println(greetResponse.getResult());
 
-        // do something
+        // shutdown channel
         System.out.println("Shut down channel!");
         channel.shutdown();
     }

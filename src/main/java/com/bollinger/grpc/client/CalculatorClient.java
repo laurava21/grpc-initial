@@ -7,6 +7,10 @@ import com.bollinger.proto.calculator.CalculatorServiceGrpc;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 
+/**
+ * Calculator client
+ * lva
+ */
 public class CalculatorClient {
     public static void main(String[] args) {
         System.out.println("Hello I'm the gRPC client!");
@@ -23,10 +27,12 @@ public class CalculatorClient {
                 .setSum2(23456L)
                 .build();
 
+        // create request object
         CalculatorRequest calculatorRequest = CalculatorRequest.newBuilder()
                 .setCalculator(calculator)
                 .build();
 
+        // sent request to server
         CalculatorResponse calculatorResponse = client.sum(calculatorRequest);
 
         System.out.println(calculatorResponse.getResult());
